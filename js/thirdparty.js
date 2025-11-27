@@ -1,5 +1,5 @@
 // js/thirdparty.js
-// uses a free public API (quotable.io) to show a random quote
+// Third-Party API: random quote from quotable.io
 
 async function getQuote() {
   const quoteOutput = document.getElementById("quoteText");

@@ -1,7 +1,7 @@
 // js/browser.js
-// browser-level features: notifications and clipboard
+// browser APIs: notifications and clipboard
 
-// show a simple notification when an entry is saved
+// show a notification when an entry is saved
 function notifyUser() {
   if (!("Notification" in window)) {
     // browser doesn't support notifications

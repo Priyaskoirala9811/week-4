@@ -1,5 +1,5 @@
 // js/storage.js
-// this file handles saving and loading journal entries
+// handles journal entries: save, load, filter, word count
 
 document.addEventListener("DOMContentLoaded", () => {
   setupEntryCounter();
@@ -22,7 +22,7 @@ function saveEntry() {
   const chosenTag = entryTagDropdown ? entryTagDropdown.value : "Other";
   const currentDate = new Date().toLocaleDateString();
 
-  // this object represents one journal entry
+  // one journal entry object
   const newJournalEntry = {
     text: entryText,
     tag: chosenTag,
@@ -40,13 +40,13 @@ function saveEntry() {
   // refresh the list
   displayEntries();
 
-  // also trigger notification if that function exists
+  // show notification if available
   if (typeof notifyUser === "function") {
     notifyUser();
   }
 }
 
-// helper to read entries from LocalStorage
+// read entries from LocalStorage
 function getEntriesFromStorage() {
   return JSON.parse(localStorage.getItem("journalEntries")) || [];
 }
@@ -60,7 +60,7 @@ function displayEntries(filterTag = "all") {
 
   let savedEntries = getEntriesFromStorage();
 
-  // if filter is not "all", then only keep matching ones
+  // filter by tag if needed
   if (filterTag !== "all") {
     savedEntries = savedEntries.filter(entry => entry.tag === filterTag);
   }
@@ -71,6 +71,7 @@ function displayEntries(filterTag = "all") {
       <strong>${journalEntry.tag}</strong> — ${journalEntry.date}<br>
       ${journalEntry.text}
     `;
+    listItem.classList.add("entry-item");
     listElement.appendChild(listItem);
   });
 }

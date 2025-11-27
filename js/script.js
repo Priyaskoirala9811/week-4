@@ -1,10 +1,10 @@
 // js/script.js
-// basic stuff that should run on every page
+// basic stuff that runs on all pages
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
-  setupTheme();    // load saved theme if there is one
-  showTodayDate(); // only does something on home page
+  setupTheme();     // load saved theme
+  showTodayDate();  // only does anything on home page
   setFooterYear();
 });
 
@@ -16,7 +16,7 @@ function setupHeader() {
   headerSection.innerHTML = `
     <div class="header-inner">
       <div class="brand">Learning Journal</div>
-      <button id="themeToggle" type="button">Light</button>
+      <button id="themeToggle" type="button" class="btn small">Light</button>
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="journal.html">Journal</a>
@@ -37,7 +37,7 @@ function setupTheme() {
   const body = document.body;
   const themeButton = document.getElementById("themeToggle");
 
-  // I decided dark as default
+  // default theme: dark
   const themeToUse = savedTheme || "dark";
 
   if (themeToUse === "light") {
@@ -51,7 +51,7 @@ function setupTheme() {
   }
 }
 
-// switch theme when user presses the button
+// toggle theme when user clicks button
 function toggleTheme() {
   const body = document.body;
   const themeButton = document.getElementById("themeToggle");
@@ -74,7 +74,7 @@ function toggleTheme() {
   localStorage.setItem("theme", newTheme);
 }
 
-// show date on home page (index.html)
+// show date on home page
 function showTodayDate() {
   const dateDisplay = document.getElementById("current-date");
   if (!dateDisplay) return;

@@ -14,7 +14,7 @@
     <h1>My Learning Journal</h1>
 
     <!-- Area for writing a new entry -->
-    <section>
+    <section class="card">
       <h2>New Entry</h2>
 
       <label for="tagSelect">Tag this entry (which week?):</label>
@@ -32,14 +32,14 @@
       <p id="entryCounter">0 words</p>
 
       <div class="btn-row">
-        <button type="button" onclick="saveEntry()">Save Entry</button>
-        <button type="button" onclick="copyLastEntry()">Copy Last Entry</button>
+        <button type="button" class="btn primary" onclick="saveEntry()">Save Entry</button>
+        <button type="button" class="btn" onclick="copyLastEntry()">Copy Last Entry</button>
       </div>
-      <p id="saveStatus"></p>
+      <p id="saveStatus" class="status-text"></p>
     </section>
 
     <!-- List of saved entries + filter -->
-    <section>
+    <section class="card">
       <h2>Previous Entries</h2>
 
       <label for="filterSelect">Filter by tag:</label>
@@ -52,14 +52,14 @@
         <option value="Other">Other</option>
       </select>
 
-      <ul id="entriesList"></ul>
+      <ul id="entriesList" class="entries-list"></ul>
     </section>
 
     <!-- Third-party API section -->
-    <section>
+    <section class="card">
       <h2>Random Learning Quote</h2>
-      <button type="button" onclick="getQuote()">Get a Quote</button>
-      <p id="quoteText"></p>
+      <button type="button" class="btn" onclick="getQuote()">Get a Quote</button>
+      <p id="quoteText" class="quote-text"></p>
     </section>
   </main>
 
