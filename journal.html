@@ -7,33 +7,58 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Header is filled in from JS -->
   <header id="site-header" class="site-header"></header>
 
   <main class="container">
     <h1>My Learning Journal</h1>
 
-    <!-- New entry form -->
+    <!-- Area for writing a new entry -->
     <section>
       <h2>New Entry</h2>
+
+      <label for="tagSelect">Tag this entry (which week?):</label>
+      <select id="tagSelect">
+        <option value="Week 1">Week 1</option>
+        <option value="Week 2">Week 2</option>
+        <option value="Week 3">Week 3</option>
+        <option value="Week 4">Week 4</option>
+        <option value="Other">Other</option>
+      </select>
+
       <textarea id="journalEntry" rows="4"
         placeholder="Write about what you learned this week..."></textarea>
+
+      <p id="entryCounter">0 words</p>
+
       <div class="btn-row">
-        <button onclick="saveEntry()">Save Entry</button>
-        <button onclick="copyLastEntry()">Copy Last Entry</button>
+        <button type="button" onclick="saveEntry()">Save Entry</button>
+        <button type="button" onclick="copyLastEntry()">Copy Last Entry</button>
       </div>
       <p id="saveStatus"></p>
     </section>
 
-    <!-- Saved entries -->
+    <!-- List of saved entries + filter -->
     <section>
       <h2>Previous Entries</h2>
+
+      <label for="filterSelect">Filter by tag:</label>
+      <select id="filterSelect" onchange="filterEntries()">
+        <option value="all">All</option>
+        <option value="Week 1">Week 1</option>
+        <option value="Week 2">Week 2</option>
+        <option value="Week 3">Week 3</option>
+        <option value="Week 4">Week 4</option>
+        <option value="Other">Other</option>
+      </select>
+
       <ul id="entriesList"></ul>
     </section>
 
-    <!-- Third-party API demo -->
+    <!-- Third-party API section -->
     <section>
       <h2>Random Learning Quote</h2>
-      <button onclick="getQuote()">Get a Quote</button>
+      <button type="button" onclick="getQuote()">Get a Quote</button>
       <p id="quoteText"></p>
     </section>
   </main>
@@ -42,7 +67,7 @@
     <p>© <span id="year"></span> Priyash Koirala — FGCT6021 Mobile Application Development</p>
   </footer>
 
-  <!-- JS files -->
+  <!-- JavaScript files -->
   <script src="js/script.js" defer></script>
   <script src="js/storage.js" defer></script>
   <script src="js/browser.js" defer></script>

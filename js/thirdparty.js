@@ -1,18 +1,18 @@
 // js/thirdparty.js
-// Uses a free Third-Party API (Quotable) to get a random quote
+// uses a free public API (quotable.io) to show a random quote
 
 async function getQuote() {
-  const el = document.getElementById("quoteText");
-  if (!el) return;
+  const quoteOutput = document.getElementById("quoteText");
+  if (!quoteOutput) return;
 
-  el.textContent = "Loading quote...";
+  quoteOutput.textContent = "Loading quote...";
 
   try {
-    const res = await fetch("https://api.quotable.io/random");
-    const data = await res.json();
-    el.textContent = `"${data.content}" — ${data.author}`;
-  } catch (err) {
-    console.error(err);
-    el.textContent = "Could not load quote right now.";
+    const response = await fetch("https://api.quotable.io/random");
+    const data = await response.json();
+    quoteOutput.textContent = `"${data.content}" — ${data.author}`;
+  } catch (error) {
+    console.error(error);
+    quoteOutput.textContent = "Could not load a quote right now.";
   }
 }
